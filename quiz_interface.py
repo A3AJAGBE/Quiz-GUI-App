@@ -22,11 +22,11 @@ class QuizInterface:
                                               text="Question goes here", font=("Arial", 20, "italic"), fill="#008080")
         self.canvas.grid(row=1, column=0, columnspan=2, pady=30)
 
-        self.true = Button(text="True", fg="green")
+        self.true = Button(text="True", fg="green", command=self.true_clicked)
         self.true.config(padx=PADDING, pady=PADDING, font=FONT, highlightthickness=0)
         self.true.grid(row=2, column=0)
 
-        self.false = Button(text="False", fg="red")
+        self.false = Button(text="False", fg="red", command=self.false_clicked)
         self.false.config(padx=PADDING, pady=PADDING, font=FONT, highlightthickness=0)
         self.false.grid(row=2, column=1)
 
@@ -37,3 +37,11 @@ class QuizInterface:
     def get_question(self):
         question = self.quiz.generate_question()
         self.canvas.itemconfig(self.q_text, text=question)
+
+    def true_clicked(self):
+        button = "True"
+        self.quiz.check_answer(button)
+
+    def false_clicked(self):
+        button = "False"
+        self.quiz.check_answer(button)
