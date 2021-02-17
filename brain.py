@@ -6,14 +6,13 @@ class QuizBrain:
         self.num = 0
         self.list = q_list
         self.score = 0
+        self.current = None
 
     def generate_question(self):
-        current = self.list[self.num]
+        self.current = self.list[self.num]
         self.num += 1
-        question = html.unescape(current.text)
+        question = html.unescape(self.current.text)
         return f'Q.{self.num}: {question} '
-        # user = input(f'Q.{self.num} {question} ').title()
-        # self.check_answer(user, current.answer)
 
     def next_question(self):
         for _ in self.list:
@@ -21,7 +20,8 @@ class QuizBrain:
         else:
             return False
 
-    def check_answer(self, user, correct):
+    def check_answer(self, user):
+        correct = self.current.answer
         if user == correct:
             self.score += 1
             print(f"Correct, score = {self.score}/{self.num}.\n")
