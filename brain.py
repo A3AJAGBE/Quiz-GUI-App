@@ -15,15 +15,12 @@ class QuizBrain:
         return f'Q.{self.num}: {question} '
 
     def next_question(self):
-        for _ in self.list:
-            self.generate_question()
-        else:
-            return False
+        return self.num < len(self.list)
 
     def check_answer(self, user):
         correct = self.current.answer
         if user == correct:
             self.score += 1
-            print(f"Correct, score = {self.score}/{self.num}.\n")
+            return True
         else:
-            print(f"Wrong, score = {self.score}/{self.num}.\n")
+            return False
