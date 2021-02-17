@@ -1,3 +1,6 @@
+import html
+
+
 class QuizBrain:
     def __init__(self, q_list):
         self.num = 0
@@ -7,7 +10,8 @@ class QuizBrain:
     def generate_question(self):
         current = self.list[self.num]
         self.num += 1
-        user = input(f'Q.{self.num} {current.text} ').title()
+        question = html.unescape(current.text)
+        user = input(f'Q.{self.num} {question} ').title()
         self.check_answer(user, current.answer)
 
     def next_question(self):
