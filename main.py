@@ -18,7 +18,7 @@ for info in question_data:
 quiz_brain = QuizBrain(question_info)
 
 # Quiz Interface Instance
-quiz_interface = QuizInterface()
+quiz_interface = QuizInterface(quiz_brain)
 
 # # Iterate through the questions
 # while quiz_brain.next_question():
