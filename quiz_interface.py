@@ -36,9 +36,14 @@ class QuizInterface:
 
     def get_question(self):
         self.canvas.config(bg="white")
-        self.score.config(text=f"Score: {self.quiz.score}")
-        question = self.quiz.generate_question()
-        self.canvas.itemconfig(self.q_text, text=question)
+        if self.quiz.next_question():
+            self.score.config(text=f"Score: {self.quiz.score}")
+            question = self.quiz.generate_question()
+            self.canvas.itemconfig(self.q_text, text=question)
+        else:
+            self.canvas.itemconfig(self.q_text, text="Quiz Completed Successfully")
+            self.true.config(state="disabled")
+            self.false.config(state="disabled")
 
     def true_clicked(self):
         self.feedback(self.quiz.check_answer("True"))
