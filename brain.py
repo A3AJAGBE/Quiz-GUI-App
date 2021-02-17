@@ -11,8 +11,9 @@ class QuizBrain:
         current = self.list[self.num]
         self.num += 1
         question = html.unescape(current.text)
-        user = input(f'Q.{self.num} {question} ').title()
-        self.check_answer(user, current.answer)
+        return f'Q.{self.num}: {question} '
+        # user = input(f'Q.{self.num} {question} ').title()
+        # self.check_answer(user, current.answer)
 
     def next_question(self):
         for _ in self.list:
