@@ -9,8 +9,8 @@ print('Type "True" or "False" to answer the following questions.')
 # Create Question Instance
 question_info = []
 for info in question_data:
-    q = info['text']
-    a = info['answer']
+    q = info['question']
+    a = info['correct_answer']
     question_info.append(Question(q, a))
 
 # Quiz brain Instance
